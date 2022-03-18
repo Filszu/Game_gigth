@@ -4,8 +4,8 @@ import {board,startMap, EndMap, startY} from "./game.js";
 import {heroesOBJ, enemiesOBJ} from "./entity.js";
 
 export default class Hero extends Entity{
-    constructor(name, hp, attack, defense, lvl, speed){
-        super(name, hp, attack, defense, lvl, speed);
+    constructor(name, hp, attack, defense, lvl, speed, vAttack){
+        super(name, hp, attack, defense, lvl, speed, vAttack);
 
 
       
@@ -37,6 +37,10 @@ export default class Hero extends Entity{
         this.docID.style.animation=" spawn 1s";
     }
 
+
+    attack(opponent){
+        opponent.hp-=1;
+    }
     
    
     

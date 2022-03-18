@@ -1,10 +1,10 @@
-import {board,startMap, EndMap, startY} from "./game.js";
+import {board,startMap, EndMap, startY, frame} from "./game.js";
 export let heroesOBJ = [] //tablica obiektow
 export let enemiesOBJ = [] //tablica obiektow
 //Klasa Entity, bede po niej dziedziczyc hero i enemy ale nwm czy to potzebne
 export default class Entity{
 
-    constructor(name, hp, attack, defense, lvl, speed) { 
+    constructor(name, hp, attack, defense, lvl, speed, vAttack) { 
 
        
         //mozna pozniej zmienic dodajc klay pochodne postaci, np peichur / mechanik
@@ -14,10 +14,12 @@ export default class Entity{
         this.defense =defense;
         this.lvl = lvl;
         this.speed = speed;
+        this.vAttack = vAttack;
 
         this.isFighting = false;
         this.x=0;
         this.y=0;
+        this.width=125;
 
       
 
@@ -64,12 +66,32 @@ export default class Entity{
     move(){
         // jesli nie walczy 
         
-
+       
         //jeżeli nie poza mapa?
-        if((this.x<=EndMap && this.x>=startMap)){
+        if((this.isFighting==false &&
+            this.x<=EndMap && this.x>=startMap)){
             this.setX(this.speed);
         }
+        
         // console.log(this.x);
+    }
+    hit(opponent){
+        if(frame%this.vAttack*100===0);
+        opponent.hp-=this.attack;
+    }
+    checkHP(){
+        if(this.hp<=0){
+            alert("dead");
+        }
+    }
+
+    fight(opponent){
+        console.log(opponent);
+        console.log(opponent.hp);
+        this.checkHP();
+        this.hit(opponent);
+        
+
     }
 
 }
