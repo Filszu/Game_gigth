@@ -1,12 +1,30 @@
 
 import Entity from "./entity.js";
 import {board,startMap, EndMap, startY} from "./game.js";
+import {heroesOBJ, enemiesOBJ} from "./entity.js";
 
 export default class Hero extends Entity{
     constructor(name, hp, attack, defense, lvl, speed){
         super(name, hp, attack, defense, lvl, speed);
 
+
+      
         
+
+    }
+
+    createDiv(){
+        //dodanie div reprezentujacego entity (do documentu)
+        var entityDiv = document.createElement('div');
+        entityDiv.className = "player";
+        entityDiv.id=`hero${heroesOBJ.length+1}`;
+        board.appendChild(entityDiv);
+       
+
+        //powiazanie div z obiektem
+        this.id=entityDiv.id;
+        this.docID = document.querySelector(`#${entityDiv.id}`);
+        //docID inaczej obiekt html reprezentujacy w graficzny sposob obiekt js
 
     }
 

@@ -36,8 +36,8 @@ body{
     background-color: rgb(71, 18, 133);
     position: absolute;
     /* bottom:0px; */
-    
 }
+
 
 .background{
     grid-column: 1/13;

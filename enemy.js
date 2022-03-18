@@ -1,14 +1,32 @@
 
 import Entity from "./entity.js";
-// import {board,startMap, EndMap, startY} from "./game.js";
+import {board,startMap, EndMap, startY} from "./game.js";
+import {heroesOBJ, enemiesOBJ} from "./entity.js";
 
 export default class Enemy extends Entity{
     constructor(name, hp, attack, defense, lvl, speed){
         super(name, hp, attack, defense, lvl, speed);
 
         
+        
 
     }
+
+    createDiv(){
+        //dodanie div reprezentujacego entity (do documentu)
+        var entityDiv = document.createElement('div');
+        entityDiv.className = "player";
+        entityDiv.id=`enemy${enemiesOBJ.length+1}`;
+        board.appendChild(entityDiv);
+       
+
+        //powiazanie div z obiektem
+        this.id=entityDiv.id;
+        this.docID = document.querySelector(`#${entityDiv.id}`);
+        //docID inaczej obiekt html reprezentujacy w graficzny sposob obiekt js
+
+ }
+
 
     spawn(){
         this.x=EndMap;
@@ -16,6 +34,7 @@ export default class Enemy extends Entity{
         this.docID.style.bottom=this.y+"px";
         this.docID.style.left=this.x+"px";
         this.docID.style.animation=" spawn 1s";
+        this.docID.style.backgroundColor ="rgb(189, 7, 7)";
     }
 
 }
