@@ -13,7 +13,7 @@ export default class Entity{
         this.defense =defense;
         this.lvl = lvl;
         this.speed = speed;
-        this.vAttack = vAttack;//predkosc ataku
+        this.vAttack = vAttack;//predkosc ataku (opoznienie miedzy ciosami)
 
         this.isFighting = false;
         this.x=0;
@@ -47,7 +47,8 @@ export default class Entity{
     }
 
     spawn(){
-              //przeniesione do dziecka   
+              //przeniesione do dziecka  
+             
        
     }
 
@@ -82,7 +83,7 @@ export default class Entity{
         
         if(this.isFighting==true){
             
-            if(frame%10==0){//czas zadawania ciosów
+            if(frame%(10*this.vAttack)==0){//czas zadawania ciosów
 
                 console.log(opponent);
                 console.log(opponent.hp);
@@ -104,6 +105,7 @@ export default class Entity{
             this.remove();
             this.isFighting=false;
         }
+        this.update_hp_info()
     }
 
     checkOpponetHP(opponent){
@@ -126,6 +128,11 @@ export default class Entity{
         this.hit(opponent);
         
 
+    }
+
+    update_hp_info(){
+        //visual info about hp
+        this.docID_hpInfo.innerHTML = `💗: ${this.hp}`;
     }
 
 

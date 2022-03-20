@@ -26,6 +26,11 @@ export default class Enemy extends Entity{
         this.docID = document.querySelector(`#${entityDiv.id}`);
         //docID inaczej obiekt html reprezentujacy w graficzny sposob obiekt js
 
+        //hp visualisation
+        this.docID.innerHTML=`<div class="entityHP">💗: </div>`;
+        this.docID_hpInfo = document.querySelector(`#${entityDiv.id} .entityHP`);
+    
+
  }
 
 
@@ -36,6 +41,9 @@ export default class Enemy extends Entity{
         this.docID.style.left=this.x+"px";
         this.docID.style.animation=" spawn 1s";
         this.docID.style.backgroundColor ="rgb(189, 7, 7)";
+
+         //tylko do pokazania
+         this.update_hp_info()
     }
 
     remove(){

@@ -38,11 +38,11 @@ export let frame=0;
 
 
 //add new entity test
-heroesOBJ.push(new Hero("hero", 100, 10, 0, 1, 5,3));
-enemiesOBJ.push(new Enemy("enemy1", 100, 10, 10, 1, -2,2));
-enemiesOBJ.push(new Enemy("enemy2", 100, 10, 10, 1, -8,1));
-enemiesOBJ.push(new Enemy("enemy3", 100, 10, 10, 1, -1,1));
-heroesOBJ.push(new Hero("hero2", 100, 10, 0, 1, 2,2));
+heroesOBJ.push(new Hero("hero", 150, 10, 0, 1, 1));
+enemiesOBJ.push(new Enemy("enemy1", 100, 10, 10, 1, -2,8));
+enemiesOBJ.push(new Enemy("enemy2", 100, 10, 10, 1, -8,8));
+enemiesOBJ.push(new Enemy("enemy3", 1000, 30, 10, 1, -1,10));
+heroesOBJ.push(new Hero("hero2", 100, 10, 0, 1, 2,1));
 
 // heroesOBJ.push(new Enemy("enemy1", 100, 10, 10, 1, 5));
 

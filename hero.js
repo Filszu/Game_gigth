@@ -25,7 +25,19 @@ export default class Hero extends Entity{
         //powiazanie div z obiektem
         this.id=entityDiv.id;
         this.docID = document.querySelector(`#${entityDiv.id}`);
+        
         //docID inaczej obiekt html reprezentujacy w graficzny sposob obiekt js
+        // this.docID_info = document.querySelector(`#${entityDiv.id}::after`);
+        // console.log(this.docID_info)
+
+
+        //hp visualisation
+        this.docID.innerHTML=`<div class="entityHP">💗: </div>`;
+        this.docID_hpInfo = document.querySelector(`#${entityDiv.id} .entityHP`);
+    
+       
+        
+
 
     }
 
@@ -36,6 +48,9 @@ export default class Hero extends Entity{
         this.docID.style.bottom=this.y+"px";
         this.docID.style.left=this.x+"px";
         this.docID.style.animation=" spawn 1s";
+
+        //tylko do pokazania
+        this.update_hp_info()
     }
 
 
@@ -46,6 +61,8 @@ export default class Hero extends Entity{
         // heroesOBJ.splice(this.idNum,1);
 
     }
+
+  
     
 
    
