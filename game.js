@@ -1,8 +1,9 @@
 import Entity from "./entity.js";
 import Hero from "./hero.js";
 import Enemy from "./enemy.js";
-import {heroesOBJ, enemiesOBJ} from "./entity.js";
+// import {heroesOBJ, enemiesOBJ} from "./entity.js";
 //rodzeil do nowych plikow
+// import('./game.js').then(console.log);  - do sprawdzenia zmiennych z modoulow
 export const board = document.querySelector('.background'); 
 const grassDiv = document.querySelector('.grass'); 
 
@@ -10,6 +11,9 @@ const grassDiv = document.querySelector('.grass');
 const ch = board.clientHeight;
 const cw = board.clientWidth;
 
+//gracze na polu
+export let heroesOBJ = [] //tablica obiektow
+export let enemiesOBJ = [] //tablica obiektow
 
 //pole rozgrywek
 export const startMap=100;
@@ -34,9 +38,11 @@ export let frame=0;
 
 
 //add new entity test
-heroesOBJ.push(new Hero("hero", 100, 10, 10, 1, 5,3));
-enemiesOBJ.push(new Enemy("hero", 100, 10, 10, 1, -2,2));
-enemiesOBJ.push(new Enemy("hero", 100, 10, 10, 1, -8,1));
+heroesOBJ.push(new Hero("hero", 100, 10, 0, 1, 5,3));
+enemiesOBJ.push(new Enemy("enemy1", 100, 10, 10, 1, -2,2));
+enemiesOBJ.push(new Enemy("enemy2", 100, 10, 10, 1, -8,1));
+enemiesOBJ.push(new Enemy("enemy3", 100, 10, 10, 1, -1,1));
+heroesOBJ.push(new Hero("hero2", 100, 10, 0, 1, 2,2));
 
 // heroesOBJ.push(new Enemy("enemy1", 100, 10, 10, 1, 5));
 
@@ -68,15 +74,16 @@ function update(){
    
 }
 
+//sprawdzanie czy się stykaja i rozpoczynanie walki
 function handleFight(){
     
     for (let i in heroesOBJ){
         for (let j in enemiesOBJ)
         if(collision(heroesOBJ[i],enemiesOBJ[j])){
-            console.log("fight");
-            heroesOBJ[i].isFighting=true;
-            enemiesOBJ[j].isFighting=true;
+            // console.log("fight");
+            
             heroesOBJ[i].fight(enemiesOBJ[j]);
+            enemiesOBJ[j].fight(heroesOBJ[i]);
             // enemiesOBJ[j].fight(heroesOBJ[i]);
         }
     }
@@ -95,7 +102,7 @@ function collision(a,b){
         {
             
             // alert(`x1: ${heroesOBJ[0].x}   x2: ${enemiesOBJ[0].x}`)
-            console.log("collision");
+            // console.log("collision");
             return true;
         }
     
@@ -116,7 +123,8 @@ function animate(){
     // collision(heroesOBJ[0],enemiesOBJ[0]);
     handleFight();
     frame++;
-    
+    // console.log(frame%100)
+    // if(frame%100==0)console.log(frame)
     requestAnimationFrame(animate);
     
 }
