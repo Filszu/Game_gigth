@@ -1,6 +1,7 @@
 import Entity from "./entity.js";
 import Hero from "./hero.js";
 import Enemy from "./enemy.js";
+import Base from "./base.js";
 // import {heroesOBJ, enemiesOBJ} from "./entity.js";
 //rodzeil do nowych plikow
 // import('./game.js').then(console.log);  - do sprawdzenia zmiennych z modoulow
@@ -34,6 +35,8 @@ export let frame=0;
 
 
 
+const myBase = new Base(100,"player");
+const enemyBase = new Base(100,"enemy");
 
 
 
@@ -41,7 +44,8 @@ export let frame=0;
 heroesOBJ.push(new Hero("hero", 150, 10, 0, 1, 1));
 enemiesOBJ.push(new Enemy("enemy1", 100, 10, 10, 1, -2,8));
 enemiesOBJ.push(new Enemy("enemy2", 100, 10, 10, 1, -8,8));
-enemiesOBJ.push(new Enemy("enemy3", 1000, 30, 10, 1, -1,10));
+enemiesOBJ.push(new Enemy("enemy3", 10, 30, 10, 1, -6,10));
+enemiesOBJ.push(new Enemy("enemy4", 1000, 30, 10, 1, -1,10));
 heroesOBJ.push(new Hero("hero2", 100, 10, 0, 1, 2,1));
 
 // heroesOBJ.push(new Enemy("enemy1", 100, 10, 10, 1, 5));
@@ -130,3 +134,10 @@ function animate(){
 }
 
 animate();
+
+
+
+const debugButton = document.querySelector("#debugButton");
+debugButton.onclick = () => {
+    heroesOBJ.push(new Hero("hero3", 150, 90, 0, 1, 10,10));
+}
