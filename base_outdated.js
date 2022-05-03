@@ -1,10 +1,9 @@
 import {board,startMap, EndMap, startY, frame} from "./game.js";
-import Entity from "./entity.js";
-import {heroesOBJ, enemiesOBJ} from "./game.js";
-export default class Base extends Entity{
+// let baseNum=0;
+//Klasa Entity, bede po niej dziedziczyc hero i enemy ale nwm czy to potzebne
+export default class Base{
     
-    constructor(name, hp, attack, defense, lvl, speed, vAttack,side) { 
-        super(name, hp, attack, defense, lvl, speed, vAttack)
+    constructor(hp, side) { 
         this.hp=hp;
         this.side=side;
         
@@ -59,23 +58,9 @@ export default class Base extends Entity{
     }
 
     
-    // update_hp_info(){
-    //     //visual info about hp
-    //     this.docID_hpInfo.innerHTML = `💗: ${this.hp}`;
-    // }
-
-    remove(){
-        this.docID.remove();
-        // heroesOBJ.splice(this.idNum,1);
-        if(this.side=="player"){
-            alert("enemy won")
-            heroesOBJ.splice(0,1);
-        }
-        else{
-            alert("player won")
-            enemiesOBJ.splice(0,1);
-        }
-
+    update_hp_info(){
+        //visual info about hp
+        this.docID_hpInfo.innerHTML = `💗: ${this.hp}`;
     }
 }
 

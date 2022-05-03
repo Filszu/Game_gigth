@@ -23,9 +23,9 @@ export default class Entity{
       
 
          //od razu wywolanie przy tworzeniu
-         this.createDiv();
-         this.spawn();
-         this.move();
+        //  this.createDiv();
+        //  this.spawn();
+        //  this.move();
 
 
     }

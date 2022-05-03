@@ -15,8 +15,10 @@ body{
 }
 
 .game{
-    width: 100%;
+    /* width: 100%; */
+    width: 80rem;
     height: 100%;
+    /* aspect-ratio: 16/9; */
     display: grid;
     grid-template-rows: 5fr 1fr;
 }

@@ -34,9 +34,11 @@ export let frame=0;
 
 
 
+// const playerBase = new Base("Base", 100, 0, 0, 1, 0, 0,"player");
+// const enemyBase = new Base("Base", 100, 0, 0, 1, 0, 0,"enemy");
 
-const myBase = new Base(100,"player");
-const enemyBase = new Base(100,"enemy");
+heroesOBJ.push(new Base("playerBase", 100, 0, 0, 1, 0, 0,"player"));
+enemiesOBJ.push(new Base("enemyBase", 100, 0, 0, 1, 0, 0,"enemy"));
 
 
 

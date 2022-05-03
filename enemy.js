@@ -7,7 +7,9 @@ export default class Enemy extends Entity{
     constructor(name, hp, attack, defense, lvl, speed, vAttack){
         super(name, hp, attack, defense, lvl, speed, vAttack);
 
-        
+        this.createDiv();
+        this.spawn();
+        this.move();
         
 
     }
