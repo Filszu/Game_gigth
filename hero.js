@@ -19,7 +19,7 @@ export default class Hero extends Entity{
         var entityDiv = document.createElement('div');
         entityDiv.className = "player";
         this.idNum=heroesOBJ.length;//któa pozycja w tablicy
-        entityDiv.id=`hero${heroesOBJ.length+1}`;
+        entityDiv.id=`hero${heroesOBJ.length}`;//length+1
         board.appendChild(entityDiv);
        
 
@@ -57,11 +57,16 @@ export default class Hero extends Entity{
 
     
 
-    remove(){
-        this.docID.remove();
-        // heroesOBJ.splice(this.idNum,1);
+    // remove(){
+    //     // this.docID.remove();
+    //     // alert(`hero nr: ${this.idNum} `)
+    //     // // heroesOBJ.splice(this.idNum,1);
 
-    }
+    //      // this.opponent.isFighting=false;
+        
+ 
+
+    // }
 
   
     

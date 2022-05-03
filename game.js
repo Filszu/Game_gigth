@@ -30,25 +30,33 @@ export let frame=0;
 // let enemiesOBJ = []  //tablica wrogów
 
 
+let money = 100;
+const moneyBox= document.querySelector(".moneyValue");
 
+export function updateMoney(value) {
+    money+=value;
+    moneyBox.innerHTML=money;
+
+}
 
 
 
 // const playerBase = new Base("Base", 100, 0, 0, 1, 0, 0,"player");
 // const enemyBase = new Base("Base", 100, 0, 0, 1, 0, 0,"enemy");
 
-heroesOBJ.push(new Base("playerBase", 100, 0, 0, 1, 0, 0,"player"));
-enemiesOBJ.push(new Base("enemyBase", 100, 0, 0, 1, 0, 0,"enemy"));
+heroesOBJ.push(new Base("playerBase", 1000, 0, 0, 1, 0, 0,"player"));
+enemiesOBJ.push(new Base("enemyBase", 10000, 0, 0, 1, 0, 0,"enemy"));
 
 
 
 //add new entity test
-heroesOBJ.push(new Hero("hero", 150, 10, 0, 1, 1));
+heroesOBJ.push(new Hero("hero1", 150, 10, 0, 1, 1));
 enemiesOBJ.push(new Enemy("enemy1", 100, 10, 10, 1, -2,8));
 enemiesOBJ.push(new Enemy("enemy2", 100, 10, 10, 1, -8,8));
 enemiesOBJ.push(new Enemy("enemy3", 10, 30, 10, 1, -6,10));
-enemiesOBJ.push(new Enemy("enemy4", 1000, 30, 10, 1, -1,10));
+enemiesOBJ.push(new Enemy("enemy4", 1000, 30, 10, 1, -1,40));
 heroesOBJ.push(new Hero("hero2", 100, 10, 0, 1, 2,1));
+heroesOBJ.push(new Hero("hero2", 100, 10, 0, 1, 2,0.002));
 
 // heroesOBJ.push(new Enemy("enemy1", 100, 10, 10, 1, 5));
 
@@ -130,6 +138,11 @@ function animate(){
     handleFight();
     frame++;
     // console.log(frame%100)
+    if(frame%600==0){
+        // updateMoney(150)
+    }
+    
+    
     // if(frame%100==0)console.log(frame)
     requestAnimationFrame(animate);
     
@@ -141,5 +154,11 @@ animate();
 
 const debugButton = document.querySelector("#debugButton");
 debugButton.onclick = () => {
-    heroesOBJ.push(new Hero("hero3", 150, 90, 0, 1, 10,10));
+    heroesOBJ.push(new Hero("hero$", 150, 90, 0, 1, 3,10));
 }
+
+const debugButton2 = document.querySelector("#debugButton2");
+debugButton2.onclick = () => {
+    enemiesOBJ.push(new Enemy("enemy$", 150, 90, 0, 1, -3,10));
+}
+

@@ -2,6 +2,7 @@
 import Entity from "./entity.js";
 import {board,startMap, EndMap, startY} from "./game.js";
 import {heroesOBJ, enemiesOBJ} from "./game.js";
+import {updateMoney} from "./game.js";
 
 export default class Enemy extends Entity{
     constructor(name, hp, attack, defense, lvl, speed, vAttack){
@@ -19,7 +20,7 @@ export default class Enemy extends Entity{
         var entityDiv = document.createElement('div');
         entityDiv.className = "player";
         this.idNum=enemiesOBJ.length;//któa pozycja w tablicy
-        entityDiv.id=`enemy${enemiesOBJ.length+1}`;
+        entityDiv.id=`enemy${enemiesOBJ.length}`;//lenght+1
         board.appendChild(entityDiv);
        
 
@@ -48,11 +49,26 @@ export default class Enemy extends Entity{
          this.update_hp_info()
     }
 
-    remove(){
-        this.docID.remove();
-        // enemiesOBJ.splice(this.idNum,1);
+    // remove(){
+    //     // this.opponent.isFighting=false;
+    //     updateMoney(100)
+    //     this.docID.remove();
+    //     // alert(`ememy nr: ${this.idNum} isFighting ${this.isFighting}`)
+    //     // alert(this.idNum)
+    //     console.warn("----------------------------------------------------------------")
+    //     console.log(enemiesOBJ[this.idNum])
+    //     this.x=-1000;
+    //     this.y=-1000;
+        
+    //     // enemiesOBJ[this.idNum]=null;
+    //     // enemiesOBJ.splice(this.idNum,1);
 
-    }
+    //     console.warn("****************************************************************")
+    //     console.log(enemiesOBJ)
+
+        
+
+    // }
 
 }
    

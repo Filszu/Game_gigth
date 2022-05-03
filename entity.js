@@ -16,9 +16,12 @@ export default class Entity{
         this.vAttack = vAttack;//predkosc ataku (opoznienie miedzy ciosami)
 
         this.isFighting = false;
+        this.isAlive=true;
         this.x=0;
         this.y=0;
         this.width=125;
+        this.opponent;
+        
 
       
 
@@ -79,53 +82,89 @@ export default class Entity{
     hit(opponent){
 
         this.checkOpponetHP(opponent);
-        this.checkHP()
+        this.checkHP(opponent)
         
         if(this.isFighting==true){
             
             if(frame%(10*this.vAttack)==0){//czas zadawania ciosów
-
-                console.log(opponent);
-                console.log(opponent.hp);
-                opponent.hp-=this.attack;
+                // if(opponent.isAlive==true){            
+                    console.log(opponent);
+                    console.log(opponent.hp);
+                    opponent.hp-=this.attack;
+                   
+                
             }
         }
         else{
-            console.log("i po co walczysz?")
+            // console.log("i po co walczysz?")
         }
 
         
         
     }
-    checkHP(){
+    checkHP(opponent){
         
-        if(this.hp<=0){
+        if(this.isAlive==true){
+             if(this.hp<=0){
+                 opponent.isFighting=false;
             // alert("dead");
             console.log(this.name+" is dead")
-            this.remove();
             this.isFighting=false;
+            this.isAlive=false;
+            this.remove();
+            
+            
+           
         }
         this.update_hp_info()
+        }
+       
     }
 
     checkOpponetHP(opponent){
         
-        if(opponent.hp<=0){
-            // alert("opponet hp =0")
-            this.isFighting=false;
+        if(opponent.isAlive==true){
+            if(!(opponent.hp>=0)){
+                // alert("opponet hp =0")
+                this.isFighting=false;
+                opponent.isFighting=false;
+            }
         }
+        else{
+            this.isFighting=false;
+            opponent.isFighting=false;
+        }
+
+        // // test
+        // if(this.hp<=0){
+        //     opponent.isFighting=fale;
+        // }
+       
     }
     
 
     remove(){
-
+        this.docID.remove();
+        
     }
 
     fight(opponent){
+        // this.opponent=opponent;
+        // this.checkOpponetHP(opponent)
 
-        this.isFighting=true;      
-        // this.checkHP();
-        this.hit(opponent);
+        if(opponent.hp>0&&opponent.isAlive==true){
+            // alert(`przciwnik żyje ${opponent.hp}, Alive: ${opponent.isAlive}`);
+
+            this.isFighting=true;      
+            // this.checkHP();
+            this.hit(opponent);
+        }
+        else{
+            // alert(`przciwnik ${opponent.name} nie żyje ${opponent.hp}, Alive: ${opponent.isAlive}`);
+            this.isFighting=false;
+            opponent.isFighting=false;
+        }
+        
         
 
     }
