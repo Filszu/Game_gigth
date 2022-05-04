@@ -12,6 +12,19 @@ export default class Base extends Entity{
         this.y=0;
         this.width=125;
 
+
+        this.name = name;
+        this.attack = attack;
+        this.defense =defense;
+        this.lvl = lvl;
+        this.speed = speed;
+        this.vAttack = vAttack;//predkosc ataku (opoznienie miedzy ciosami)
+
+        this.isFighting = false;
+        this.isAlive=true;
+     
+        this.opponent;
+
        
         this.createDiv();
         this.spawn();

@@ -106,12 +106,13 @@ export default class Entity{
         
         if(this.isAlive==true){
              if(this.hp<=0){
-                 opponent.isFighting=false;
+
+            opponent.isFighting=false;
             // alert("dead");
-            console.log(this.name+" is dead")
+            console.log(this.id+" is dead")
             this.isFighting=false;
             this.isAlive=false;
-            this.remove();
+            this.remove(opponent);
             
             
            
@@ -122,17 +123,20 @@ export default class Entity{
     }
 
     checkOpponetHP(opponent){
+        // alert(`sprawdzanie hp: ${opponent.hp}`)
         
-        if(opponent.isAlive==true){
-            if(!(opponent.hp>=0)){
+        // if(opponent.isAlive==true){
+            if((opponent.hp<=0)){
                 // alert("opponet hp =0")
                 this.isFighting=false;
                 opponent.isFighting=false;
+                alert(`on ma ${opponent.hp}`)
             }
-        }
+        // }
         else{
-            this.isFighting=false;
-            opponent.isFighting=false;
+            // this.isFighting=false;
+            // opponent.isFighting=false;
+            // alert(`on nie zyje ma ${opponent.hp}`)
         }
 
         // // test
@@ -143,8 +147,14 @@ export default class Entity{
     }
     
 
-    remove(){
+    remove(o){
         this.docID.remove();
+        o.isFighting=false;
+        alert(o.isFighting +'OP / THIS'+ this.isFighting)
+        this.x=-1000;
+        this.y=-1000;
+        this.width=0;
+       
         
     }
 

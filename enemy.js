@@ -70,6 +70,11 @@ export default class Enemy extends Entity{
 
     // }
 
+    // remove(){
+    //     this.docID.remove();
+    //     updateMoney(100)
+    // }
+
 }
    
     

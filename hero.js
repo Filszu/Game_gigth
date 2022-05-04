@@ -58,11 +58,23 @@ export default class Hero extends Entity{
     
 
     // remove(){
-    //     // this.docID.remove();
+    //     this.docID.remove();
     //     // alert(`hero nr: ${this.idNum} `)
     //     // // heroesOBJ.splice(this.idNum,1);
 
     //      // this.opponent.isFighting=false;
+
+         
+
+    //     const indexOfObject = heroesOBJ.findIndex(object => {
+    //     return object.id === this.id;
+    //     });
+
+    //     alert(indexOfObject); // 👉️ 1
+
+    //     heroesOBJ.splice(indexOfObject, 1);
+
+    //     console.log(heroesOBJ);
         
  
 

@@ -45,7 +45,7 @@ export function updateMoney(value) {
 // const enemyBase = new Base("Base", 100, 0, 0, 1, 0, 0,"enemy");
 
 heroesOBJ.push(new Base("playerBase", 1000, 0, 0, 1, 0, 0,"player"));
-enemiesOBJ.push(new Base("enemyBase", 10000, 0, 0, 1, 0, 0,"enemy"));
+enemiesOBJ.push(new Base("enemyBase", 1500, 0, 0, 1, 0, 0,"enemy"));
 
 
 
@@ -96,9 +96,12 @@ function handleFight(){
         if(collision(heroesOBJ[i],enemiesOBJ[j])){
             // console.log("fight");
             
-            heroesOBJ[i].fight(enemiesOBJ[j]);
-            enemiesOBJ[j].fight(heroesOBJ[i]);
+            
+                heroesOBJ[i].fight(enemiesOBJ[j]);
+                enemiesOBJ[j].fight(heroesOBJ[i]);
             // enemiesOBJ[j].fight(heroesOBJ[i]);
+        
+            
         }
     }
 }
