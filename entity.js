@@ -81,16 +81,17 @@ export default class Entity{
     }
     hit(opponent){
 
-        this.checkOpponetHP(opponent);
-        this.checkHP(opponent)
+       
         
         if(this.isFighting==true){
+            // alert("hit")
             
             if(frame%(10*this.vAttack)==0){//czas zadawania ciosów
                 // if(opponent.isAlive==true){            
+                    
+                    opponent.hp-=this.attack;
                     console.log(opponent);
                     console.log(opponent.hp);
-                    opponent.hp-=this.attack;
                    
                 
             }
@@ -112,7 +113,7 @@ export default class Entity{
             console.log(this.id+" is dead")
             this.isFighting=false;
             this.isAlive=false;
-            this.remove(opponent);
+            // this.remove(opponent);
             
             
            
@@ -123,57 +124,75 @@ export default class Entity{
     }
 
     checkOpponetHP(opponent){
-        // alert(`sprawdzanie hp: ${opponent.hp}`)
-        
-        // if(opponent.isAlive==true){
-            if((opponent.hp<=0)){
-                // alert("opponet hp =0")
-                this.isFighting=false;
-                opponent.isFighting=false;
-                alert(`on ma ${opponent.hp}`)
-            }
-        // }
+        console.log(opponent.hp)
+        if(opponent.hp>0){
+            
+            console.log(`on zyje ${opponent.hp} (${opponent.id})`)
+            this.hit(opponent)
+        }
         else{
-            // this.isFighting=false;
-            // opponent.isFighting=false;
-            // alert(`on nie zyje ma ${opponent.hp}`)
+            console.log(`on NIE zyje ${opponent.hp} (${opponent.id})`)
+            this.isFighting=false;
+            this.remove(opponent)
         }
 
-        // // test
-        // if(this.hp<=0){
-        //     opponent.isFighting=fale;
-        // }
-       
     }
+    // checkOpponetHP(opponent){
+    //     // alert(`sprawdzanie hp: ${opponent.hp}`)
+        
+    //     // if(opponent.isAlive==true){
+    //         if((opponent.hp<=0)){
+    //             // alert("opponet hp =0")
+    //             this.isFighting=false;
+    //             opponent.isFighting=false;
+    //             alert(`on ma ${opponent.hp}`)
+    //         }
+    //     // }
+    //     else{
+    //         // this.isFighting=false;
+    //         // opponent.isFighting=false;
+    //         // alert(`on nie zyje ma ${opponent.hp}`)
+    //     }
+
+    //     // // test
+    //     // if(this.hp<=0){
+    //     //     opponent.isFighting=fale;
+    //     // }
+       
+    // }
     
 
-    remove(o){
-        this.docID.remove();
-        o.isFighting=false;
-        alert(o.isFighting +'OP / THIS'+ this.isFighting)
-        this.x=-1000;
-        this.y=-1000;
-        this.width=0;
+    // remove(o){
+    //     this.docID.remove();
+    //     o.isFighting=false;
+    //     // alert(o.isFighting +'OP / THIS'+ this.isFighting)
+    //     this.x=-1000;
+    //     this.y=-1000;
+    //     this.width=0;
        
         
+    // }
+
+    remove(o){
+        o.docID.remove();
+        o.isAlive=false;
+        o.x=-1000;
+
     }
 
     fight(opponent){
         // this.opponent=opponent;
         // this.checkOpponetHP(opponent)
 
-        if(opponent.hp>0&&opponent.isAlive==true){
-            // alert(`przciwnik żyje ${opponent.hp}, Alive: ${opponent.isAlive}`);
+       
 
             this.isFighting=true;      
             // this.checkHP();
             this.hit(opponent);
-        }
-        else{
-            // alert(`przciwnik ${opponent.name} nie żyje ${opponent.hp}, Alive: ${opponent.isAlive}`);
-            this.isFighting=false;
-            opponent.isFighting=false;
-        }
+            this.checkOpponetHP(opponent);
+            this.checkHP(opponent)
+            
+    
         
         
 
